@@ -8,6 +8,8 @@
 </head>
 <body class="chat-body">
 
+    <button id="settingsBtn" class="settings-btn">Settings</button>
+
     <div class="sidebar">
         <img id="myProfilePic" class="profile-pic" src="" alt="Me">
         <div id="friendsList" class="friends-list"></div>
@@ -37,3 +39,24 @@
     <script type="module" src="app.js"></script>
 </body>
 </html>
+
+<div id="settingsModal" class="modal hidden">
+    <div class="modal-content">
+        <h2>Profile Settings</h2>
+
+        <h3>Select an Animal Profile Picture</h3>
+        <div class="animal-grid">
+            <img class="animal-option" data-animal="cat" src="https://i.imgur.com/1Q9Z1Zm.png">
+            <img class="animal-option" data-animal="dog" src="https://i.imgur.com/8Qf4u0B.png">
+            <img class="animal-option" data-animal="panda" src="https://i.imgur.com/5y7y0yP.png">
+            <img class="animal-option" data-animal="fox" src="https://i.imgur.com/4qz0e8M.png">
+            <img class="animal-option" data-animal="frog" src="https://i.imgur.com/8x6u0bT.png">
+            <img class="animal-option" data-animal="penguin" src="https://i.imgur.com/0u7wY8S.png">
+        </div>
+
+        <h3>Upload Custom Background</h3>
+        <input type="file" id="bgUpload">
+
+        <button id="closeSettings" class="close-btn">Close</button>
+    </div>
+</div>
