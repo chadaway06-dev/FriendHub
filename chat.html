@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FriendHub Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="chat-body">
+
+    <div class="sidebar">
+        <img id="myProfilePic" class="profile-pic" src="" alt="Me">
+        <div id="friendsList" class="friends-list"></div>
+        <button id="logoutBtn" class="logout-btn">Log Out</button>
+    </div>
+
+    <div class="chat-panel">
+        <div class="chat-header">
+            <img id="chatUserPic" class="chat-user-pic" src="" alt="">
+            <h2 id="chatUserName" class="chat-username">Select a friend</h2>
+        </div>
+
+        <div id="messages" class="messages"></div>
+
+        <div id="typingIndicator" class="typing-indicator hidden">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+        <div class="message-input-container">
+            <input id="messageInput" type="text" placeholder="Send a message..." class="message-input">
+            <button id="sendBtn" class="send-btn">Send</button>
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
