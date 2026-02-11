@@ -213,3 +213,49 @@ if (isChatPage) {
         signOut(auth);
     };
 }
+// SETTINGS MODAL
+const settingsBtn = document.getElementById("settingsBtn");
+const settingsModal = document.getElementById("settingsModal");
+const closeSettings = document.getElementById("closeSettings");
+const bgUpload = document.getElementById("bgUpload");
+
+settingsBtn.onclick = () => settingsModal.classList.remove("hidden");
+closeSettings.onclick = () => settingsModal.classList.add("hidden");
+
+// ANIMAL PROFILE PICTURES
+document.querySelectorAll(".animal-option").forEach(img => {
+    img.onclick = () => {
+        const url = img.src;
+        update(ref(db, "users/" + currentUser.uid), { profilePic: url });
+        myProfilePic.src = url;
+        settingsModal.classList.add("hidden");
+    };
+});
+
+// CUSTOM BACKGROUND UPLOAD
+bgUpload.onchange = async () => {
+    const file = bgUpload.files[0];
+    if (!file) return;
+
+    const storageRef = sRef(storage, "backgrounds/" + currentUser.uid);
+    await uploadBytes(storageRef, file);
+    const url = await getDownloadURL(storageRef);
+
+    update(ref(db, "users/" + currentUser.uid), { background: url });
+
+    document.body.style.backgroundImage = `url(${url})`;
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center";
+
+    settingsModal.classList.add("hidden");
+};
+
+// LOAD BACKGROUND ON LOGIN
+onValue(ref(db, "users/" + currentUser.uid), snap => {
+    const data = snap.val();
+    if (data && data.background) {
+        document.body.style.backgroundImage = `url(${data.background})`;
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center";
+    }
+});
